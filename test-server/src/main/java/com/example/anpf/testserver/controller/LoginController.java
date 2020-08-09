@@ -5,6 +5,8 @@ package com.example.anpf.testserver.controller;
 
 import java.util.Objects;
 
+import com.example.anpf.testserver.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.HtmlUtils;
@@ -20,18 +22,24 @@ import com.example.anpf.testserver.result.Result;
 @Controller
 public class LoginController {
 
+	@Autowired
+	UserService service;
+
 	@CrossOrigin
 	@PostMapping(value="api/login")
 	@ResponseBody
 	public Result login(@RequestBody User reqUser) {
 		String name = reqUser.getName();
 		name = HtmlUtils.htmlEscape(name);
-		String pwd = reqUser.getPassword();
-		if(!Objects.equals("admin",name) && !Objects.equals("123456", pwd)) {
+		String password = reqUser.getPassword();
+
+		User user = service.getByNameAndPassword(name, password);
+		if(null == user) {
 			String message = "账号或密码错误";
-			System.out.print(message);
+			System.out.println(message);
 			return new Result(400);
 		} else {
+			System.out.println("登录成功");
 			return new Result(200);
 		}		
 	}
