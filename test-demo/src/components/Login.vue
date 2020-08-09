@@ -1,13 +1,12 @@
 <template>
   <body id="login-page">
-    <el-form class="login-container" label-position="left" label-width="0px">
+    <el-form class="login-container" label-position="right" label-width="70px">
       <h3 class="login_title">系统登录</h3>
-      <el-form-item>
-        用户名: <el-input type="text" v-model="User.name" auto-complete="off" placeholder="请输入用户名">
+      <el-form-item label="用户名:">
+        <el-input type="text" v-model="User.name" auto-complete="off" placeholder="请输入用户名">
       </el-input>
       </el-form-item>
-      <el-form-item>
-        密&nbsp;&nbsp;&nbsp;码:
+      <el-form-item label="密码:">
         <el-input type="password" v-model="User.password" auto-complete="off" placeholder="请输入密码">
         </el-input>
       </el-form-item>
