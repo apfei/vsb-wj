@@ -3,7 +3,7 @@
  */
 package com.example.anpf.testserver.controller;
 
-import java.util.Objects;
+import javax.servlet.http.HttpSession;
 
 import com.example.anpf.testserver.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +28,7 @@ public class LoginController {
 	@CrossOrigin
 	@PostMapping(value="api/login")
 	@ResponseBody
-	public Result login(@RequestBody User reqUser) {
+	public Result login(@RequestBody User reqUser, HttpSession session) {
 		String name = reqUser.getName();
 		name = HtmlUtils.htmlEscape(name);
 		String password = reqUser.getPassword();
@@ -40,6 +40,7 @@ public class LoginController {
 			return new Result(400);
 		} else {
 			System.out.println("登录成功");
+			session.setAttribute("user", user);
 			return new Result(200);
 		}		
 	}
