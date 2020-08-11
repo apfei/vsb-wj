@@ -3,33 +3,35 @@
  */
 package com.example.anpf.testserver.bean;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Data;
-
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import lombok.Data;
 
 /**
  * @author anpf
- * @date: 2020/08/07
+ * @date: 2020/08/11
  */
 @Data
 @Entity
-@Table(name = "user")
+@Table(name = "book")
 @JsonIgnoreProperties({"handler","hibernateLazyInitializer"})
-public class User {
+public class Book {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private int id;
-	private String name;
-	private String password;
-	private String salt;
-	private String role;
-	private String phone;
-	private String email;
 	
-	@Column(name = "enable_flg")
-	private String enabled;
-
+	private String cover;
+	private String title;
+	private String author;
+	private String date;
+	private String press;
+	private String abs;
+	
+	@ManyToOne
+	@JoinColumn(name = "cid")
+	private Category category; 
 }
