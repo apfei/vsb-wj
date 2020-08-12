@@ -2,10 +2,10 @@
   <el-container>
     <el-aside style="width: 200px; margin-top: 20px">
       <switch></switch>
-      <SideMenu></SideMenu>
+      <SideMenu @indextSelect="listByCategory" ref="sideMenu"></SideMenu>
     </el-aside>
     <el-main>
-      <books class="book-area"></books>
+      <books class="books-area" ref="booksArea"></books>
     </el-main>
   </el-container>
 </template>
@@ -16,13 +16,24 @@ import Books from './Books'
 
 export default {
   name: 'ALibrary',
-  components: {SideMenu, Books}
+  components: {SideMenu, Books},
+  methods: {
+    listByCategory () {
+      var _this = this
+      var cid = this.$refs.SideMenu.cid
+      var url = 'category/' + cid + '/books'
+      this.$axios.get(url).then(req => {
+        if (req && req.status === 200) {
+          _this.$refs.booksArea.Books = req.data
+        }
+      })
+    }
+  }
 }
 </script>
 
 <style scoped>
   .books-area {
-    position: fixed;
     width: 990px;
     margin-left: auto;
     margin-right: auto;
