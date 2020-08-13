@@ -10,16 +10,16 @@
           <el-input v-model="form.author" auto-complete="off"></el-input>
         </el-form-item>
         <el-form-item label="出版日期" :label-width="labelwidth" prop="date">
-          <el-input v-model="form.author" auto-complete="off"></el-input>
+          <el-input v-model="form.date" auto-complete="off"></el-input>
         </el-form-item>
         <el-form-item label="出版社" :label-width="labelwidth" prop="press">
-          <el-input v-model="form.author" auto-complete="off"></el-input>
+          <el-input v-model="form.press" auto-complete="off"></el-input>
         </el-form-item>
         <el-form-item label="封面" :label-width="labelwidth" prop="cover">
-          <el-input v-model="form.author" auto-complete="off"></el-input>
+          <el-input v-model="form.cover" auto-complete="off"></el-input>
         </el-form-item>
         <el-form-item label="简介" :label-width="labelwidth" prop="abs">
-          <el-input v-model="form.author" auto-complete="off"></el-input>
+          <el-input v-model="form.abs" auto-complete="off"></el-input>
         </el-form-item>
         <el-form-item label="分类" :label-width="labelwidth" prop="category">
           <el-select v-model="form.category.id" placeholder="请选择分类">
