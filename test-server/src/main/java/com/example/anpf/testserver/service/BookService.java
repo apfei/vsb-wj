@@ -20,4 +20,6 @@ public interface BookService {
     void deleteById(int id);
 
     List<Book> listByCategory(int cid);
+    
+    List<Book> searchByKeywords(String keyWord1, String keyWord2);
 }

@@ -52,4 +52,9 @@ public class BookServiceImpl implements BookService{
 		return dao.findAllByCategory(category);
 	}
 
+	@Override
+	public List<Book> searchByKeywords(String keyWord1, String keyWord2) {
+		return dao.findAllByTitleLikeOrAuthorLike('%' + keyWord1 + '%', '%' + keyWord2 + '%');
+	}
+
 }

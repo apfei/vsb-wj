@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="search-bar">
     <el-input @keyup.enter.native="Search" placeholder="通过书名或作者搜索"
     prefix-icon="el-icon-search" size="small" v-model="keywords"
     style="width: 400px;margin-right: 10px"></el-input>
@@ -26,5 +26,10 @@ export default {
 </script>
 
 <style scoped>
-
+  .search-bar {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 </style>

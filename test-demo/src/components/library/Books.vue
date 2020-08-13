@@ -71,7 +71,9 @@ export default {
     },
     searchResult () {
       var _this = this
-      this.$axios.get('/search?keywords=' + this.$refs.SearchBar.keywords, {})
+      // var keywords = this.$refs.searchBar.keywords
+      console.log(this.$refs.searchBar.keywords)
+      this.$axios.post('/search', {keywords: this.$refs.searchBar.keywords})
         .then(req => {
           if (req && req.status === 200) {
             _this.books = req.data

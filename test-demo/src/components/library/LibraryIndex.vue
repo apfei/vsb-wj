@@ -2,7 +2,7 @@
   <el-container>
     <el-aside style="width: 200px; margin-top: 20px">
       <switch></switch>
-      <SideMenu @indextSelect="listByCategory" ref="sideMenu"></SideMenu>
+      <SideMenu @indexSelect="listByCategory" ref="sideMenu"></SideMenu>
     </el-aside>
     <el-main>
       <books class="books-area" ref="booksArea"></books>
@@ -20,11 +20,12 @@ export default {
   methods: {
     listByCategory () {
       var _this = this
-      var cid = this.$refs.SideMenu.cid
-      var url = 'category/' + cid + '/books'
+      var cid = this.$refs.sideMenu.cid
+      var url = 'categories/' + cid + '/books'
+      console.log(url)
       this.$axios.get(url).then(req => {
         if (req && req.status === 200) {
-          _this.$refs.booksArea.Books = req.data
+          _this.$refs.booksArea.books = req.data
         }
       })
     }

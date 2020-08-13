@@ -49,4 +49,17 @@ public class LibraryController {
             return list();
         }
     }
+    
+    @CrossOrigin
+    @GetMapping("/api/search")
+    public List<Book> searchByKeyword(@RequestParam("keywords") String keywords){
+    	System.out.println(keywords);
+    	if("" == keywords) {
+    		return bookService.list();
+    	} else {
+    		return bookService.searchByKeywords(keywords, keywords);
+    	}
+
+    	
+    }
 }
