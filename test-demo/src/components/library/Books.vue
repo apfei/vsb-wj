@@ -86,7 +86,7 @@ export default {
         cancelButtonText: '取消',
         type: 'warning'
       }).then(() => {
-        this.$$axios.post('/delete', {id: id}).then(req => {
+        this.$axios.post('/delete', {id: id}).then(req => {
           if (req && req.status === 200) {
             this.loadBooks()
           }

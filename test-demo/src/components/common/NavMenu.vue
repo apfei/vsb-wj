@@ -1,5 +1,5 @@
 <template>
-  <el-menu :default-active="'/index'" router mode="horizontal"
+  <el-menu :default-active="currentPath" router mode="horizontal"
            background-color="white" text-color="#222"
            active-text-color="red" style="min-width: 1300px">
     <el-menu-item v-for="(item, i) in navList" :key="i" :index="item.name">
@@ -23,6 +23,19 @@ export default {
         {name: '/library', navItem: '图书馆'},
         {name: '/admin', navItem: '个人中心'}
       ]
+    }
+  },
+  computed: {
+    hoverBackground () {
+      return '#ffd04b'
+    },
+    currentPath () {
+      var x = this.$route.path.indexOf('/', 1)
+      if (x !== -1) {
+        return this.$route.path.substring(0, x)
+      } else {
+        return this.$route.path
+      }
     }
   }
 
