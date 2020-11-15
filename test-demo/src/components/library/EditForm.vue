@@ -17,6 +17,7 @@
         </el-form-item>
         <el-form-item label="封面" :label-width="labelwidth" prop="cover">
           <el-input v-model="form.cover" auto-complete="off"></el-input>
+          <img-uplod @onUpload="uploadImg" ref="imgUpload"></img-uplod>
         </el-form-item>
         <el-form-item label="简介" :label-width="labelwidth" prop="abs">
           <el-input v-model="form.abs" auto-complete="off"></el-input>
@@ -44,8 +45,10 @@
 </template>
 
 <script>
+import ImgUplod from './ImgUplod'
 export default {
   name: 'EditForm',
+  components: {ImgUplod},
   data () {
     return {
       editFrom: false,
@@ -95,6 +98,9 @@ export default {
             this.$emit('onSubmit')
           }
         })
+    },
+    uploadImg () {
+      this.form.cover = this.$refs.imgUpload.url
     }
   }
 }
